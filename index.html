@@ -1,0 +1,236 @@
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Formulário</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+      integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark mb-4">
+      <div class="container">
+        <div class="navbar-brand mb-0 h1 mx-auto">
+          <h1>Formulário</h1>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container w-50 bg-light">
+      <p class="text-center rounded h3 py-4">Preencha com seus dados</p>
+      <p class="lead text-center pb-4">Clique no botão "Enviar" ao finalizar, caso seja necessário, clique em "Limpar" para apagar o conteúdo escrito.</p>
+      <form>
+      <div class="row form-group">
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="first-name"
+            id="first-name"
+            class="form-control"
+            required
+            placeholder="Nome"
+          />
+        </div>
+        <div class="col-sm-6">
+          <input
+            type="text"
+            name="last-name"
+            id="last-name"
+            required
+            class="form-control"
+            placeholder="Sobrenome"
+          />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <input type="text" id="email" class="form-control" placeholder="E-mail" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="mt-3" id="check">
+            <div class="form-check form-check-inline w-100 justify-content-between">
+
+              
+                <label class="col-form-label ml-1" for="form-check">Sexo </label>
+              
+               
+              
+                <div class="f">
+                  <input class="form-check-input" type="radio" name="f" id="f" value="f" />
+                  <label for="f" class="form-check-label">Feminino</label>
+                </div>
+             
+
+              
+              <div class="m">
+                
+                  <input class="form-check-input" type="radio" name="m" id="f/m" value="m" />
+                  <label for="m" class="form-check-label">Masculino</label>
+                
+              </div>
+
+              
+                <div class="not-declared">
+                  <input  class="form-check-input" type="radio" name="not-declared" id="not-declared" />
+                  <label for="not-declared" class="form-check-label">Prefiro não declarar</label>
+                </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group row mt-3">
+          <label class="col-sm-3 col-form-label" for="area">Área de atuação </label>
+          <div class="col-sm-3">
+            <select class="form-control" name="area" id="area" required>
+              <option  value="write">Selecione</option>
+              <option value="front">Front-End</option>
+              <option value="back">Back-End</option>
+              <option value="devops">DevOps</option>
+              <option value="full">FullStack</option>
+              <option value="cybersec">Cybersecurity</option>
+            </select>
+
+          </div>
+          <label class="col-sm-3  col-form-label">
+            Pretensão salarial</label>
+            <div class="col-sm-3">
+              <input
+              class="form-control"
+                type="number"
+                name="salario"
+                id="salario"
+                placeholder="R$"
+                required
+              />
+            </div>        
+        </div>
+      </div>
+      </div>
+      <div class="row mt-2">
+        <div class="container">
+          <fieldset class="scheduler-border">
+            <legend class="scheduler-border">Endereço</legend>
+            <div class="row mt-2">
+              <div class="col-sm-3">
+                  
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="CEP"
+                    required
+                    id="cep"
+                    onblur="getCEP(this.value)"
+                  />
+                </div>
+                <div class="col-sm-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Número"
+                    id="endereco"
+                   
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Endereço"
+                    id="logradouro"
+                    readonly
+                  />
+                </div>
+
+                
+            </div>
+            <div class="row form-group mt-3">
+              <div class="col-sm-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Bairro"
+                  id="bairro"
+                  readonly
+                />
+              </div>
+              <div class="col-sm-4">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Cidade"
+                  id="cidade"
+                  readonly
+                />
+              </div>
+
+          
+            <div class="col-sm-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="UF"
+                readonly
+                id="uf"
+              />
+            </div>
+          </div>
+          </fieldset>
+          
+        </div>
+      </div>
+      <div class="w-100 text-center pb-3">
+        <button class="btn btn-danger" onclick="resetInfo()">Limpar</button>
+        <button class="btn btn-primary"> Enviar</button>
+      </div>
+    </form>
+
+      </div>
+         <!-- Modal -->
+         <div
+         class="modal fade"
+         id="dialogModal"
+         tabindex="-1"
+         aria-labelledby="exampleModalLabel"
+         aria-hidden="true"
+       >
+         <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <h5 class="" id="modal-title">Erro</h5>
+             </div>
+             <div id="modal-body" class="modal-body">CPF não encontrado, tente novamente.</div>
+             <div class="modal-footer">
+               <button
+                 type="button"
+                 id="modal-btn"
+                 class="btn btn-danger"
+                 data-dismiss="modal"
+               >Ok, vou corrigir!</button>
+             </div>
+           </div>
+         </div>
+       </div>
+    </div>
+     <!-- Option 1: Bootstrap Bundle with Popper -->
+     <script
+     src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+     crossorigin="anonymous"
+   ></script>
+   <script
+     src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+     crossorigin="anonymous"
+   ></script>
+    <script src="assets/js/index.js"></script>
+  </body>
+</html>
